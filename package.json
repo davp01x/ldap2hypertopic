@@ -1,0 +1,29 @@
+{
+  "name": "ldap2hypertopic",
+  "version": "1.0.0",
+  "description": "Consult an LDAP directory as if it was an Hypertopic service. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hypertopic/ldap2hypertopic.git"
+  },
+  "keywords": [
+    "hypertopic",
+    "ldap",
+    "adapter"
+  ],
+  "author": "Aurélien Bénel",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Hypertopic/ldap2hypertopic/issues"
+  },
+  "homepage": "https://github.com/Hypertopic/ldap2hypertopic",
+  "dependencies": {
+    "express": "^4.13.4",
+    "ez-config": "^0.2.1",
+    "ldapjs": "^1.0.0"
+  }
+}

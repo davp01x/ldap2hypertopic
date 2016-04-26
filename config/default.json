@@ -1,0 +1,39 @@
+{
+  "port":1337,
+  "ldap":{
+    "server":{
+      "url":"ldap://ldap.utt.fr/"
+    },
+    "base":"ou=people,dc=utt,dc=fr",
+    "attributes":[
+      "uid",
+      "displayName",
+      "mail",
+      "telephoneNumber",
+      "roomNumber",
+      "businessCategory",
+      "title",
+      "jpegPhoto",
+      "formation",
+      "niveau",
+      "filiere"
+    ],
+    "class":"eduPersonAffiliation",
+    "id":"uid"
+  },
+  "hypertopic":{
+    "uid": "id",
+    "displayName": "name",
+    "jpegPhoto": "thumbnail"
+  },
+  "reserved":{
+    "attributes":{
+      "dn":0, 
+      "uid":0, 
+      "controls":0
+    },
+    "values":{
+      "NC":0
+    }
+  }
+}
