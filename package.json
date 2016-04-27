@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Hypertopic/ldap2hypertopic",
   "dependencies": {
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "ez-config": "^0.2.1",
     "ldapjs": "^1.0.0"

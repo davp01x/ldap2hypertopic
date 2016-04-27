@@ -1,6 +1,7 @@
 const app = require('express')();
 const config = require('ez-config').get();
 const ldap = require('ldapjs').createClient(config.ldap.server);
+const cors = require('cors')();
 
 var payload = {
   rows: null,
@@ -51,7 +52,8 @@ function sendItems(request, response) {
   });
 }
 
-app.get('/corpus/:corpus', sendItems);
+app.use(cors)
+.get('/corpus/:corpus', sendItems);
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
