@@ -33,12 +33,15 @@ var payload = {
 
 function sendItems(request, response) {
   var filter =  '(' + config.ldap.class + '=' + request.params.corpus + ')';
+  if (request.params.item) {
+    filter = '(&' + filter + '('+ config.ldap.id + '=' + request.params.item + '))';
+  }
   var options = {
     scope: 'sub', 
     filter: filter,
     attributes: config.ldap.attributes
   };
-  payload.init(request.params.corpus);
+  payload.init(request.params.corpus, request.params.item);
   ldap.search(config.ldap.base, options, function(err, ldap_response) {
     ldap_response.on('searchEntry', function(entry) {
       payload.push(entry.object);
@@ -53,7 +56,7 @@ function sendItems(request, response) {
 }
 
 app.use(cors)
-.get('/corpus/:corpus', sendItems);
+.get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems);
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
