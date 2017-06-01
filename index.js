@@ -67,6 +67,8 @@ function sendAttributes(request, response) {
 app.use(cors)
 .get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems)
 .get('/attribute/:corpus/', sendAttributes);
+//.get('/attribute/:corpus/:attribute', sendAttributeValues)
+//.get('/attribute/:corpus/:attribute/:value', sendAttributeValues)
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
