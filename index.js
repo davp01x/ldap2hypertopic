@@ -55,8 +55,18 @@ function sendItems(request, response) {
   });
 }
 
+function sendAttributes(request, response) {
+  var corpus = request.params.corpus;
+  var rows = [];
+  for (var attribute of config.ldap.attributes) {
+    rows.push({key:[corpus, config.hypertopic[attribute]||attribute]});
+  }
+  response.json({rows:rows});
+}
+
 app.use(cors)
-.get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems);
+.get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems)
+.get('/attribute/:corpus/', sendAttributes);
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
