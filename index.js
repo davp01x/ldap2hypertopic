@@ -19,7 +19,7 @@ var payload = {
       if (!(attribute in config.reserved.attributes || entry[attribute] in config.reserved.values)) {
         var value = {};
         value[config.hypertopic[attribute]||attribute] = entry[attribute];
-        this.rows.push({ 
+        this.rows.push({
           key: key,
           value: value
         });
@@ -37,7 +37,7 @@ function sendItems(request, response) {
     filter = '(&' + filter + '('+ config.ldap.id + '=' + request.params.item + '))';
   }
   var options = {
-    scope: 'sub', 
+    scope: 'sub',
     filter: filter,
     attributes: config.ldap.attributes
   };
@@ -55,8 +55,13 @@ function sendItems(request, response) {
   });
 }
 
+function sendEmpty(request, response){
+  response.json({rows: []});
+}
+
 app.use(cors)
-.get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems);
+.get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems)
+.get('/viewpoint/:viewpoint', sendEmpty);
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
