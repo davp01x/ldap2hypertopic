@@ -59,9 +59,17 @@ function sendEmpty(request, response){
   response.json({rows: []});
 }
 
+function sendUser(request, response){
+  response.json({rows: [{
+    key:'annuaire',
+    value:{"corpus":{"id":"student", "name":"Étudiants"}}
+    }]});
+}
+
 app.use(cors)
 .get(['/corpus/:corpus', '/item/:corpus/:item'], sendItems)
-.get('/viewpoint/:viewpoint', sendEmpty);
+.get('/viewpoint/:viewpoint', sendEmpty)
+.get('/user/annuaire', sendUser);
 
 app.listen(config.port);
 console.log('Server running on port ' + config.port);
