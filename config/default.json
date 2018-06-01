@@ -22,14 +22,14 @@
     "id":"uid"
   },
   "hypertopic":{
-    "uid": "id",
-    "displayName": "name",
-    "jpegPhoto": "thumbnail"
+    "uid": ["id"],
+    "displayName": ["name"],
+    "jpegPhoto": ["thumbnail", "resource"]
   },
   "reserved":{
     "attributes":{
-      "dn":0, 
-      "uid":0, 
+      "dn":0,
+      "uid":0,
       "controls":0
     },
     "values":{

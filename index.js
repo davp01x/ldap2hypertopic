@@ -18,7 +18,13 @@ var payload = {
     for (var attribute in entry) {
       if (!(attribute in config.reserved.attributes || entry[attribute] in config.reserved.values)) {
         var value = {};
-        value[config.hypertopic[attribute]||attribute] = entry[attribute];
+        if(config.hypertopic[attribute]){
+          for(var indexAttribute in config.hypertopic[attribute]){
+            value[config.hypertopic[attribute][indexAttribute]] = entry[attribute];
+          }
+        }else{
+          value[attribute] = entry[attribute];
+        }
         this.rows.push({
           key: key,
           value: value
@@ -63,7 +69,7 @@ function sendUser(request, response){
   response.json({rows: [{
     key:'annuaire',
     value:{"corpus":{"id":"student", "name":"Étudiants"}}
-    }]});
+  }]});
 }
 
 app.use(cors)
